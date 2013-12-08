@@ -1,0 +1,14 @@
+## Every test file
+*.exe
+*.mkv
+*.srt
+
+## Exception logging files
+*.log
+
+## Build directory
+/build/
+
+## Miscellaneous
+Thumbs.db
+.DS_Store
