@@ -13,7 +13,7 @@ begin
     end
   end
 rescue Exception => e
-  File.open("jimaku.log") do |f|
+  File.open("jimaku.log", "w") do |f|
     f.puts e.inspect
     f.puts e.backtrace
   end
