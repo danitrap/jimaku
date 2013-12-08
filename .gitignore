@@ -9,6 +9,9 @@
 ## Build directory
 /build/
 
+## Sublime Text 2 specific
+*.sublime-*
+
 ## Miscellaneous
 Thumbs.db
 .DS_Store
