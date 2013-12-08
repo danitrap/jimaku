@@ -1,4 +1,4 @@
-#!/usr/bin/env rubyw
+#!/usr/bin/env ruby
 begin
   $:.unshift File.dirname($0)
 

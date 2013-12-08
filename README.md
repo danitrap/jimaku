@@ -2,15 +2,18 @@
 
 Automagically rename your subtitle files.
 
+## Download
+
+To download it for normal usage please refer to the [releases page](https://github.com/danitrap/jimaku/releases).
+
 ## Usage
 
 Drag and drop your video and subtitle files on jimaku.exe to automagically rename your subtitle file.
 
 ## Build
 
-I use [OCRA](https://github.com/larsch/ocra) to build it.
+I use [OCRA](https://github.com/larsch/ocra) to build it, make sure to install it: `gem install ocra`
 
-    gem install ocra
     ocra jimaku.rb --windows --output ./build/jimaku.exe
 
 ## License
