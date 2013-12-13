@@ -11,10 +11,10 @@ rescue ArgumentError
   exe = File.basename(ENV["OCRA_EXECUTABLE"]) rescue $0
   message = "Usage:\nDrag and drop your video and subtitle files " +
             "on #{exe} to automagically rename your subtitle file."
-  MessageBox.new(message, "Jimaku", :info)
+  MessageBox.show(message, "Jimaku", :info)
   
 rescue Exception => e
   message = "An error occured while running Jimaku:\n\n"
   message << "#{e.message} (#{e.class})"
-  MessageBox.new(message, "Jimaku", :error)
+  MessageBox.show(message, "Jimaku", :error)
 end

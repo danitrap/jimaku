@@ -1,8 +1,13 @@
-class MessageBox
+module MessageBox
+  ##
+  # A simple MessageBox helper.
+  #
+  # It only supports ERROR and INFO.
+
   ICON_ERROR = 0x00000010
   ICON_INFO = 0x00000040
-  
-  def initialize(message, title, icon)
+
+  def self.show(message, title, icon)
     require 'Win32API'
     msg_icon = case icon
       when :error then ICON_ERROR

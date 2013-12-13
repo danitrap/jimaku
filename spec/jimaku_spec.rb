@@ -15,7 +15,7 @@ describe Jimaku do
 	end
 
 	describe "#new" do
-		it "should be an instance of jimaku" do
+		it "should be an instance of Jimaku" do
 			@jimaku.should be_an_instance_of Jimaku
 		end
 
@@ -30,7 +30,7 @@ describe Jimaku do
 		end
 
 		it "should raise an exception if no subtitle files are given" do
-			lambda {Jimaku.new "test.mkv", "testing.mkv"}.should raise_exception NoSubFileGiven
+			lambda {Jimaku.new "test.mkv", "testing.mkv"}.should raise_exception NoSubFileGivenError
 		end
 	end
 

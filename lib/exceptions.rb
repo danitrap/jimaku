@@ -1,4 +1,4 @@
-class NoSubFileGiven < StandardError
+class NoSubFileGivenError < StandardError
   attr_accessor :object, :message
   def initialize(object, message)
     @object = object
