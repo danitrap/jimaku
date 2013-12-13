@@ -18,7 +18,7 @@ I use [OCRA](https://github.com/larsch/ocra) to build it, make sure to install i
 
     ocra start.rb --windows --output ./build/jimaku.exe
 
-## Test
+### Test
 
 To test this app just run rspec `rspec spec/`
 
