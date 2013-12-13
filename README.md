@@ -10,11 +10,17 @@ To download it for normal usage please refer to the [releases page](https://gith
 
 Drag and drop your video and subtitle files on jimaku.exe to automagically rename your subtitle file.
 
-## Build
+## Development
+
+### Build
 
 I use [OCRA](https://github.com/larsch/ocra) to build it, make sure to install it: `gem install ocra`
 
-    ocra jimaku.rb --windows --output ./build/jimaku.exe
+    ocra start.rb --windows --output ./build/jimaku.exe
+
+## Test
+
+To test this app just run rspec `rspec spec/`
 
 ## License
 
