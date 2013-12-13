@@ -13,20 +13,21 @@ class Jimaku
 
 
   def initialize(first_file, second_file)
-    @files = [first_file, second_file]
-
-    if @files.none? {|file| EXTS.include? File.extname(file)}
-      raise NoSubFileGivenError.new(@files, "No subtitles file given.")
+    @pair = case
+      when EXTS.include?( File.extname(first_file) )
+        {video: second_file, subtitles: first_file}
+      when EXTS.include?( File.extname(second_file) )
+        {video: first_file, subtitles: second_file}
+      else
+        raise NoSubFileGivenError.new(self, "No subtitles file given.")
     end
   end
 
   def rename!
-    @files.each_with_index do |arg,i|
-      if (found = EXTS.index(File.extname(arg)))
-        previous = @files[i == 0 ? 1 : 0]
-        new_name = File.dirname(previous) + "/" + File.basename(previous, File.extname(previous))
-        File.rename(arg, new_name + EXTS[found])
-      end
-    end
+    new_name = File.dirname(@pair[:video]) + "/" + 
+               File.basename(@pair[:video], File.extname(@pair[:video])) +
+               File.extname(@pair[:subtitles])
+
+    File.rename @pair[:subtitles], new_name
   end
 end

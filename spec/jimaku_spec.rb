@@ -1,9 +1,14 @@
 require_relative '../lib/jimaku'
+require 'securerandom'
+
+EXTS = [".srt", ".ass", ".aqt", ".jss", ".sub", ".ttxt", ".pjs", 
+        ".rt", ".gsub", ".gsup", ".ssa", ".usf", ".idx", ".stl"]
 
 describe Jimaku do
 
 	before :each do
-		@testing_files = ["./tmp/test.mkv", "./tmp/testing.srt"]
+		ext = EXTS[rand(0..13)]
+		@testing_files = ["./tmp/#{SecureRandom.hex}.mkv", "./tmp/#{SecureRandom.hex}#{ext}"]
 
 		FileUtils.mkdir "./tmp"
 		FileUtils.touch @testing_files
@@ -32,13 +37,21 @@ describe Jimaku do
 		it "should raise an exception if no subtitle files are given" do
 			lambda {Jimaku.new "test.mkv", "testing.mkv"}.should raise_exception NoSubFileGivenError
 		end
+
+		it "should work regardless of the order" do
+			reversed = @testing_files.reverse
+			Jimaku.new *reversed
+		end
+
 	end
 
 	describe "#rename!" do
 		it "should rename the correct file" do
 			@jimaku.rename!
-			File.exists?("./tmp/test.srt").should eql true
-			File.exists?("./tmp/test.mkv").should eql true
+			video = @testing_files[0]
+			previous_subtitles = @testing_files[1]
+			File.exists?(video).should eql true
+			File.exists?(previous_subtitles).should eql false
 		end
 	end
 
