@@ -6,56 +6,56 @@ EXTS = [".srt", ".ass", ".aqt", ".jss", ".sub", ".ttxt", ".pjs",
 
 describe Jimaku do
 
-	before :all do
-		FileUtils.mkdir "./tmp"
-	end
-	
-	before :each do
-		ext = EXTS[rand(0..13)]
-		@testing_files = ["./tmp/#{SecureRandom.hex}.mkv", "./tmp/#{SecureRandom.hex}#{ext}"]
+  before :all do
+    FileUtils.mkdir "./tmp"
+  end
 
-		FileUtils.touch @testing_files
-		@jimaku = Jimaku.new *@testing_files
-	end
+  before :each do
+    ext = EXTS[rand(0..13)]
+    @testing_files = ["./tmp/#{SecureRandom.hex}.mkv", "./tmp/#{SecureRandom.hex}#{ext}"]
 
-	after :all do
-		FileUtils.rm_rf "./tmp"
-	end
+    FileUtils.touch @testing_files
+    @jimaku = Jimaku.new *@testing_files
+  end
 
-	describe "#new" do
-		it "should be an instance of Jimaku" do
-			@jimaku.should be_an_instance_of Jimaku
-		end
+  after :all do
+    FileUtils.rm_rf "./tmp"
+  end
 
-		context "it should take the right amount of parameters" do
-			it "should not accept only one parameter" do
-				lambda {Jimaku.new "test.mkv"}.should raise_exception ArgumentError
-			end
-			it "should not accept three parameters" do
-				three_params = lambda {Jimaku.new "test.mkv", "test.mkv", "test.mkv"}
-				three_params.should raise_exception ArgumentError
-			end
-		end
+  describe "#new" do
+    it "should be an instance of Jimaku" do
+      @jimaku.should be_an_instance_of Jimaku
+    end
 
-		it "should raise an exception if no subtitle files are given" do
-			lambda {Jimaku.new "test.mkv", "testing.mkv"}.should raise_exception NoSubFileGivenError
-		end
+    context "it should take the right amount of parameters" do
+      it "should not accept only one parameter" do
+        lambda {Jimaku.new "test.mkv"}.should raise_exception ArgumentError
+      end
+      it "should not accept three parameters" do
+        three_params = lambda {Jimaku.new "test.mkv", "test.mkv", "test.mkv"}
+        three_params.should raise_exception ArgumentError
+      end
+    end
 
-		it "should work regardless of the order" do
-			reversed = @testing_files.reverse
-			Jimaku.new *reversed
-		end
+    it "should raise an exception if no subtitle files are given" do
+      lambda {Jimaku.new "test.mkv", "testing.mkv"}.should raise_exception NoSubFileGivenError
+    end
 
-	end
+    it "should work regardless of the order" do
+      reversed = @testing_files.reverse
+      Jimaku.new *reversed
+    end
 
-	describe "#rename!" do
-		it "should rename the correct file" do
-			@jimaku.rename!
-			video = @testing_files[0]
-			previous_subtitles = @testing_files[1]
-			File.exists?(video).should eql true
-			File.exists?(previous_subtitles).should eql false
-		end
-	end
+  end
+
+  describe "#rename!" do
+    it "should rename the correct file" do
+      @jimaku.rename!
+      video = @testing_files[0]
+      previous_subtitles = @testing_files[1]
+      File.exists?(video).should eql true
+      File.exists?(previous_subtitles).should eql false
+    end
+  end
 
 end
