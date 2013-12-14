@@ -6,16 +6,19 @@ EXTS = [".srt", ".ass", ".aqt", ".jss", ".sub", ".ttxt", ".pjs",
 
 describe Jimaku do
 
+	before :all do
+		FileUtils.mkdir "./tmp"
+	end
+	
 	before :each do
 		ext = EXTS[rand(0..13)]
 		@testing_files = ["./tmp/#{SecureRandom.hex}.mkv", "./tmp/#{SecureRandom.hex}#{ext}"]
 
-		FileUtils.mkdir "./tmp"
 		FileUtils.touch @testing_files
 		@jimaku = Jimaku.new *@testing_files
 	end
 
-	after :each do
+	after :all do
 		FileUtils.rm_rf "./tmp"
 	end
 

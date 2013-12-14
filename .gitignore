@@ -1,7 +1,9 @@
-## Every test file
-*.exe
-*.mkv
-*.srt
+## Ignore bundler config.
+/.bundle
+
+## Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
 
 ## Exception logging files
 *.log
