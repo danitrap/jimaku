@@ -8,6 +8,8 @@ To download it for normal usage please refer to the [releases page](https://gith
 
 ## Usage
 
+![Usage](http://i.imgur.com/sOVqYkH.gif "Usage")
+
 Drag and drop your video and subtitle files on jimaku.exe to automagically rename your subtitle file.
 
 ## Development
