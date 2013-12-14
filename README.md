@@ -22,7 +22,11 @@ I use [OCRA](https://github.com/larsch/ocra) to build it, make sure to install i
 
 ### Test
 
-To test this app just run rspec `rspec spec/`
+Make sure to install all the dependencies by running `bundle install`
+
+To test this app just run rake `rake` or rspec directly `rspec spec/`
+
+[![Build Status](https://travis-ci.org/danitrap/jimaku.png?branch=master)](https://travis-ci.org/danitrap/jimaku)
 
 ## License
 
