@@ -1,4 +1,4 @@
-require_relative '../lib/jimaku'
+require_relative '../app/jimaku'
 require 'securerandom'
 
 EXTS = [".srt", ".ass", ".aqt", ".jss", ".sub", ".ttxt", ".pjs", 

@@ -1,6 +1,6 @@
 #!/usr/bin/env rubyw
-require_relative 'lib/jimaku'
-require_relative 'lib/messagebox'
+require_relative 'app/jimaku'
+require_relative 'app/messagebox'
 
 begin
   $:.unshift File.dirname($0)
